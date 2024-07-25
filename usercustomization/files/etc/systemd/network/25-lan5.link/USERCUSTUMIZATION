@@ -1,0 +1,8 @@
+[Match]
+Driver=igc
+Path=pci-0000:05:*
+
+[Link]
+NamePolicy=
+AlternativeNamesPolicy=
+Name=lan5

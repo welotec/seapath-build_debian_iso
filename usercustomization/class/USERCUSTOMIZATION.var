@@ -40,9 +40,9 @@ apt_cdn=http://ftp.fr.debian.org
 #LOGUSER=fai
 
 # network configuration static
-REMOTENIC=enp1s0
-#REMOTEADDR=10.0.0.2/24
-#REMOTEGW=10.0.0.1
+REMOTENIC=lan1
+REMOTEADDR=10.0.0.2/24
+REMOTEGW=10.0.0.1
 # you can set the ip on a vlan interface
 #REMOTEVLANID=159
 
@@ -50,4 +50,4 @@ REMOTENIC=enp1s0
 # No: DHCP will be disable
 # all: DHCP will be enable for all interface
 # [interface]: DHCP will be enable for the interface. e.g enp1s0
-REMOTEDHCP=enp1s0
+REMOTEDHCP=lan1

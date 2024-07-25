@@ -1,0 +1,10 @@
+[Unit]
+Description=overwrite /etc/issue, old is in /etc/issue.bak
+Before=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c '/etc/update-motd.d/20-warning > /etc/issue'
+
+[Install]
+WantedBy=multi-user.target

@@ -17,5 +17,5 @@ if [ "$display_help" = true ]; then
     echo "$(tput setaf 6)"
     echo "Some of the default SSH keys were found, these are not to be trusted!"
     echo "For more information on what this means and how to solve the issue"
-    echo "please refer to the instructions at: https://github.com/welotec/seapath-build_debian_iso$(tput sgr0)"
+    echo "please refer to the instructions at: https://github.com/welotec/seapath-build_debian_iso#security$(tput sgr0)"
 fi

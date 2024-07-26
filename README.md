@@ -20,6 +20,26 @@ dd if=~/Downloads/seapath.iso of=/dev/sdX bs=4M && sync # where sdX is your thum
 If you are on Windows we recommend using rufus to burn the seapath.iso onto your USB thumb drive.
 Use the DD mode when doing so.
 
+Then plug the USB thumb drive int the RSAPC MK2 and boot off of it, for 
+instruction on how to do so refer to the official manual. The installation will 
+be fully automatic and will overwrite the first disk it finds. If there is an 
+NVMe installed it's going to be that. Otherwise it will be whichever SSD is 
+installed in the first slot. It is recommended to not have any drive 
+installed which has sensitive data whose loss you can't afford.
+
+After this your device will reboot into the operating system. You can then go ahead
+and use it like you'd use any other RT-os. However, you still have to enable
+the Welotec customizations to get the most benefit from your device.
+To do so simply activate the welo-sp-rt tuned profile by typing in the following
+
+```bash
+tuned-adm profile welo-sp-rt
+```
+
+In order for some of the settings to take effect you will also have to reboot
+the device. The next section will discuss custumizations so you can plan out
+how to deploy your realtime application.
+
 
 ## Customizations
 

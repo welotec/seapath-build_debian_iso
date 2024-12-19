@@ -40,7 +40,7 @@ function write_MACs_to_linkfiles {
 	for i in "${!lp_list[@]}"; do
 		lp=${lp_list[$i]}
 		mac=${maclist[$i]}
-		fai-sed 's/REPLACETHIS/$mac/' /etc/systemd/network/20-lan$lp.link
+		fai-sed "s/REPLACETHIS/$mac/" /etc/systemd/network/20-lan$lp.link
 	done
 }
 

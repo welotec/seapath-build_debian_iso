@@ -1,0 +1,10 @@
+[Match]
+Driver=igc
+PermanentMACAddress=REPLACETHIS
+
+[Link]
+NamePolicy=
+AlternativeNamesPolicy=
+Name=lan1
+AlternativeName=lan_mgmt
+AlternativeName=lan_ptp

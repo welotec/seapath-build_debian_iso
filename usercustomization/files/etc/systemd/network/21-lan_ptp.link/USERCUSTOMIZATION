@@ -1,0 +1,8 @@
+[Match]
+Driver=igb
+PermanentMACAddress=70:F8:E7*
+
+[Link]
+NamePolicy=
+AlternativeNamesPolicy=
+Name=lan_hsr-prp

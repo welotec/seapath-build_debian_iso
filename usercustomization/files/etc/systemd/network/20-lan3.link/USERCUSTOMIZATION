@@ -1,8 +1,8 @@
 [Match]
 Driver=igc
-Path=pci-0000:06:*
+PermanentMACAddress=REPLACETHIS	
 
 [Link]
 NamePolicy=
 AlternativeNamesPolicy=
-Name=lan6
+Name=lan3

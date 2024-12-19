@@ -1,5 +1,49 @@
 #!/bin/bash
 
+function find_onboard_MACs {
+	old_mac=000000000000
+	file=$(mktemp)
+	i=0
+	files='/sys/class/net/*/address'
+	if [[ $1 == 'test' ]]; then
+		files='./macs_to_test.txt'
+	fi
+	for mac in $(cat $files | sort); do
+		check=$(( 0x${mac//:/} - 0x${old_mac//:/} ))
+		if [[ $check == 1 ]] && (( i < 7 )); then
+			echo $old_mac >> $file
+			echo $mac >> $file
+			((i++))
+		elif (( i >= 7 )); then
+			break
+		else
+			i=0
+			echo "" > $file
+		fi
+		old_mac=$mac
+	done
+	data=$(uniq $file)
+	#echo $data | wc -w
+	for mac in $data; do
+		echo $mac
+	done
+	rm $file
+}
+
+function write_MACs_to_linkfiles {
+	lp_list=(5 6 7 8 1 2 3 4)
+	mapfile -t maclist < <(find_onboard_MACs)
+	if [[ ${#lp_list[@]} -ne ${#maclist[@]} ]]; then
+		echo "Error: lp_list and maclist have different lengths!"
+		exit 1
+	fi
+	for i in "${!lp_list[@]}"; do
+		lp=${lp_list[$i]}
+		mac=${maclist[$i]}
+		fai-sed 's/REPLACETHIS/$mac/' /etc/systemd/network/20-lan$lp.link
+	done
+}
+
 error=0; trap 'error=$(($?>$error?$?:$error))' ERR # save maximum error code
 
 fcopy -m root,root,0755 /usr/local/sbin/hw_setup.sh
@@ -14,5 +58,7 @@ fcopy -m root,root,0755 /etc/update-motd.d/20-warning
 $ROOTCMD mv /etc/issue /etc/issue.bak
 $ROOTCMD ln -s /etc/systemd/system/generate_issue.service /etc/systemd/system/multi-user.target.wants/generate_issue.service
 $ROOTCMD ln -s /lib/systemd/system/tuned.service /etc/systemd/system/multi-user.target.wants/tuned.service
+
+write_MACs_to_linkfiles
 
 ainsl /etc/modules "msr"

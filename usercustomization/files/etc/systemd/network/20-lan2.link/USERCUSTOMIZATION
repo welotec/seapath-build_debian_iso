@@ -1,8 +1,8 @@
 [Match]
 Driver=igc
-Path=pci-0000:05:*
+PermanentMACAddress=REPLACETHIS
 
 [Link]
 NamePolicy=
 AlternativeNamesPolicy=
-Name=lan5
+Name=lan2

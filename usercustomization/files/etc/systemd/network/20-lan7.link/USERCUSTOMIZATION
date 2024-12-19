@@ -1,6 +1,6 @@
 [Match]
 Driver=igc
-Path=pci-0000:07:*
+PermanentMACAddress=REPLACETHIS
 
 [Link]
 NamePolicy=

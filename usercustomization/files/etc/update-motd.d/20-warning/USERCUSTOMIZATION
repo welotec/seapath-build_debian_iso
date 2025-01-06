@@ -1,7 +1,7 @@
 #!/bin/bash
 export TERM=xterm-256color
 
-homes=("/root" "/home/virtu" "/home/ansible")
+homes=("/root" "/home/admin" "/home/ansible")
 search_string="WELOTEC - DO NOT TRUST"
 for home in "${homes[@]}"; do
     file="$home/.ssh/authorized_keys"

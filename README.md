@@ -114,7 +114,7 @@ user:
 ```bash
 ssh-copy-id root@192.168.0.10 # Swap the IP with the IP or hostname of your server
 ssh-copy-id ansible@192.168.0.10 # Swap the IP with the IP or hostname of your server
-ssh-copy-id virtu@192.168.0.10 # Swap the IP with the IP or hostname of your server
+ssh-copy-id admin@192.168.0.10 # Swap the IP with the IP or hostname of your server
 ```
 
 Once you've done this, you should check that you can actually login using the
@@ -128,12 +128,12 @@ key mentionend above in the following files.
 ```bash
 /root/.ssh/authorized_keys
 /home/ansible/.ssh/authorized_keys
-/home/virtu/.ssh/authorized_keys
+/home/admin/.ssh/authorized_keys
 ```
 After you've done that you should verify that they are gone, by trying to log
 in with the old keys, which should now fail.
 
-To change the passwords simply login to the users root and virtu and and
+To change the passwords simply login to the users root and admin and and
 interactively change the password as desired using `passwd`
 
 If anything is still unclear, please don't hesitate to open an issue explaining
